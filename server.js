@@ -50,7 +50,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Serve React build output
-app.use(express.static(path.join(__dirname, 'client/dist')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Example health endpoint
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
@@ -67,7 +67,7 @@ app.all('*', (req, res, next) => {
   }
 
   // For non-API routes, serve the React app's index.html file
-  res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
 
