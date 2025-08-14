@@ -14,7 +14,7 @@ import {
   Alert,
 } from "@mui/material";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:4000";
+//const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:4000";
 
 export default function InformedConsentForm() {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ export default function InformedConsentForm() {
   const allChecked = Object.values(consent).every(Boolean);
 
   const submitToApi = async (payload) => {
-    const res = await fetch(`${API_BASE}/api/consent`, {
+    const res = await fetch(`/api/consent`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
