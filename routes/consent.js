@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Consent = require("../models/consent"); // Adjust the path as needed
+const Consent = require("./../models/Consent"); // Adjust the path as needed
 
 // Basic server-side validation helper
 function validatePayload(body) {
