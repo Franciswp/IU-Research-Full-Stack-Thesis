@@ -47,7 +47,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Serve React build (static files)
-const clientBuildPath = path.join(__dirname, "survey-app", "dist");
+const clientBuildPath = path.join(__dirname, "survey-app/dist");
 app.use(express.static(clientBuildPath));
 
 // Example health endpoint
