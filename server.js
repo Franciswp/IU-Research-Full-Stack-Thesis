@@ -46,9 +46,8 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// Serve React build (static files)
-const clientBuildPath = path.join(__dirname, "survey-app/dist");
-app.use(express.static(clientBuildPath));
+// Serve React build output
+app.use(express.static(path.join(__dirname, 'survey-app/dist'))); 
 
 // Example health endpoint
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
@@ -57,20 +56,17 @@ app.get("/api/health", (req, res) => res.json({ status: "ok" }));
 const consentRouter = require("./routes/consent");
 app.use("/api/consent", consentRouter);
 
-// Catch-all: serve React app for non-API routes
-app.get("*", (req, res, next) => {
-  // If request is for an API route, forward to next (which will return 404)
-  if (req.originalUrl.startsWith("/api/")) {
-    return next();
+// Serve React front-end for any unmatched route
+app.all('*', (req, res, next) => {
+  if (req.originalUrl.startsWith('/api')) {
+    // If the route starts with /api, return a 404 error
+    return next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
   }
 
-  // For all other routes, serve index.html from the build
-  res.sendFile(path.join(clientBuildPath, "index.html"), (err) => {
-    if (err) {
-      next(err);
-    }
-  });
+  // For non-API routes, serve the React app's index.html file
+  res.sendFile(path.join(__dirname, 'survey-app/dist', 'index.html'));
 });
+
 
 // Simple 404 handler for API routes and other not-found errors
 app.use((req, res) => {
