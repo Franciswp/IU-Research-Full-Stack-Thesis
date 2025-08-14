@@ -1,5 +1,6 @@
-const path = require("path");
+// server.js
 require("dotenv").config();
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -8,62 +9,81 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'survey-app/dist'))); // Serve React build output
 
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI;
 
+// Validate required env vars
 if (!MONGO_URI) {
-  console.error("MONGODB_URI not set in .env");
+  console.error("MONGO_URI not set in .env");
   process.exit(1);
 }
 
-// Database connection
-const DB = process.env.MONGO_URI.replace('<PASSWORD>', process.env.MONGO_PASSWORD);
-
-mongoose.connect(DB, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log("Connected to MongoDB"))
+// Connect to MongoDB
+const dbUri = MONGO_URI.replace("<PASSWORD>", process.env.MONGO_PASSWORD || "");
+mongoose
+  .connect(dbUri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB"))
   .catch((e) => {
     console.error("MongoDB connection error:", e);
     process.exit(1);
   });
 
+// Middleware
 app.use(helmet());
-app.use(cors({
-  origin: ["http://localhost:5173"] // update to your frontend origin(s)
-}));
+app.use(
+  cors({
+    origin: ["http://localhost:5173"], // update to real frontend origin(s) in production
+  })
+);
 app.use(express.json({ limit: "10kb" }));
 app.use(morgan("combined"));
 
+// Rate limiter
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 30
+  max: 30,
 });
 app.use(limiter);
 
-// Public endpoints (if any)
-app.get('/', (req, res) => res.send('Consent API'));
+// Serve React build (static files)
+const clientBuildPath = path.join(__dirname, "survey-app", "dist");
+app.use(express.static(clientBuildPath));
 
-// ...existing code...
-// routes
-const consentRouter = require('./routes/consent');
+// Example health endpoint
+app.get("/api/health", (req, res) => res.json({ status: "ok" }));
+
+// API routes
+const consentRouter = require("./routes/consent");
 app.use("/api/consent", consentRouter);
-// ...existing code...
 
-// Serve React front-end for any unmatched route
-app.all('*', (req, res, next) => {
-  if (req.originalUrl.startsWith('/api')) {
-    // If the route starts with /api, return a 404 error
-    return next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+// Catch-all: serve React app for non-API routes
+app.get("*", (req, res, next) => {
+  // If request is for an API route, forward to next (which will return 404)
+  if (req.originalUrl.startsWith("/api/")) {
+    return next();
   }
 
-  // For non-API routes, serve the React app's index.html file
-  res.sendFile(path.join(__dirname, 'survey-app/dist', 'index.html'));
+  // For all other routes, serve index.html from the build
+  res.sendFile(path.join(clientBuildPath, "index.html"), (err) => {
+    if (err) {
+      next(err);
+    }
+  });
 });
 
+// Simple 404 handler for API routes and other not-found errors
+app.use((req, res) => {
+  res.status(404).json({ error: "Not Found" });
+});
 
-app.get("/", (req, res) => res.send("Consent API"));
+// Simple error handler (customize as needed)
+app.use((err, req, res, next) => {
+  console.error(err);
+  const status = err.status || 500;
+  res.status(status).json({
+    error: err.message || "Internal Server Error",
+  });
+});
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
