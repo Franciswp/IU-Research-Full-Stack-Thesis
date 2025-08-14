@@ -33,7 +33,7 @@ mongoose
 app.use(helmet());
 app.use(
   cors({
-    origin: ["http://localhost:5173"], // update to real frontend origin(s) in production
+    origin: ["http://localhost:5173", "https://fc-research-thesis.onrender.com/"], // update to real frontend origin(s) in production
   })
 );
 app.use(express.json({ limit: "10kb" }));
