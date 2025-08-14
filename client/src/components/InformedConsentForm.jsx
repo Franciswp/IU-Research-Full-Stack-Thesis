@@ -185,7 +185,7 @@ export default function InformedConsentForm() {
 
             <TextField
               required
-              label="Participant Name"
+              label="Participant Name/Company"
               value={participantName}
               onChange={(e) => setParticipantName(e.target.value)}
               fullWidth
