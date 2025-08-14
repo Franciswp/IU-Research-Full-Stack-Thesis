@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'survey-app/dist'))); // Serve React build output
 
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI;
@@ -49,6 +50,18 @@ app.get('/', (req, res) => res.send('Consent API'));
 const consentRouter = require('./routes/consent');
 app.use("/api/consent", consentRouter);
 // ...existing code...
+
+// Serve React front-end for any unmatched route
+app.all('*', (req, res, next) => {
+  if (req.originalUrl.startsWith('/api')) {
+    // If the route starts with /api, return a 404 error
+    return next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+  }
+
+  // For non-API routes, serve the React app's index.html file
+  res.sendFile(path.join(__dirname, 'survey-app/dist', 'index.html'));
+});
+
 
 app.get("/", (req, res) => res.send("Consent API"));
 
