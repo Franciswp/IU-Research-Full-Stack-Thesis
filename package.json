@@ -2,11 +2,11 @@
   "name": "consent-server",
   "version": "1.0.0",
   "main": "server.js",
-  "scripts": {
+"scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm run dev --prefix survey-app",
-    "clientinstall": "npm install --prefix survey-app",
+    "client": "npm run dev --prefix client",
+    "clientinstall": "npm install --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {

@@ -47,7 +47,7 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Serve React build output
-app.use(express.static(path.join(__dirname, 'survey-app/dist'))); 
+app.use(express.static(path.join(__dirname, 'client/dist')));
 
 // Example health endpoint
 app.get("/api/health", (req, res) => res.json({ status: "ok" }));
@@ -64,8 +64,9 @@ app.all('*', (req, res, next) => {
   }
 
   // For non-API routes, serve the React app's index.html file
-  res.sendFile(path.join(__dirname, 'survey-app/dist', 'index.html'));
+  res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
 });
+
 
 
 // Simple 404 handler for API routes and other not-found errors
