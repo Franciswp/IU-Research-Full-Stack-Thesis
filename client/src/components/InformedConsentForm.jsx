@@ -223,11 +223,13 @@ export default function InformedConsentForm() {
                   variant="outlined"
                   color="secondary"
                   onClick={() =>
-                    window.open(
-                      "https://forms.office.com/Pages/ResponsePage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u",
-                      "_blank",
-                      "noopener,noreferrer"
-                    )
+                    setTimeout(() => {
+                      window.open(
+                        "https://forms.office.com/Pages/ResponsePage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u",
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                    }, 1000)
                   }
                 >
                   Survey Link
