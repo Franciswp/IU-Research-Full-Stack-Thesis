@@ -230,7 +230,7 @@ export default function InformedConsentForm() {
               </Button>
 
               <Button variant="outlined" color="primary" href="/">
-                Previous page
+                Previous 
               </Button>
             </Box>
           </Stack>
