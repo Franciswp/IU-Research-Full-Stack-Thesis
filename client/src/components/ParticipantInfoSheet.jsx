@@ -1,4 +1,9 @@
-import React from "react";
+// Unregister service worker if present
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(regs => {
+    regs.forEach(reg => reg.unregister());
+  });
+}import React from "react";
 import { Box, Typography, Button, Paper, Container } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
