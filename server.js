@@ -58,6 +58,8 @@ app.get("/api/health", (req, res) => res.json({ status: "ok" }));
 // API routes
 const consentRouter = require("./routes/consent");
 app.use("/api/consent", consentRouter);
+const surveyRouter = require("./routes/surveys");
+app.use("/api/surveys", surveyRouter);
 
 // Serve React front-end for any unmatched route
 app.all('*', (req, res, next) => {

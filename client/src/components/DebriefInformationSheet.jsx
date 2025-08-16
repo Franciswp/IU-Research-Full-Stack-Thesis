@@ -33,15 +33,7 @@ export default function DebriefInformationSheet() {
   <Button
     variant="outlined"
     color="secondary"
-    onClick={() =>
-      setTimeout(() => {
-        window.open(
-          "https://forms.office.com/pages/responsepage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u&route=shorturl",
-          "_blank",
-          "noopener,noreferrer"
-        );
-      }, 1000)
-    }
+    href=" /survey"
   >
     Survey Link
   </Button>
