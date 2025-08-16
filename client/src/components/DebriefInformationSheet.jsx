@@ -31,14 +31,20 @@ export default function DebriefInformationSheet() {
         </Typography><br />
         <Box display="flex" gap={2}>
    <Button
-                     variant="outlined"
-                     color="secondary"
-                     onClick={() =>
-                       setTimeout(() => {
-                         window.open(
-                           "https://forms.office.com/Pages/ResponsePage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u",
-                           "_blank",
-                           "noopener,noreferrer"
+          variant="outlined"
+          color="secondary"
+          onClick={() =>
+            setTimeout(() => {
+              window.open(
+                "https://forms.office.com/e/qeJTgKiqrt",
+                "_blank",
+                "noopener,noreferrer"
+              );
+            }, 1000)
+          }
+        >
+          Survey Link
+        </Button>
                          );
                        }, 1000)
                      }
