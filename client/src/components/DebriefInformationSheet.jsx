@@ -33,7 +33,7 @@ export default function DebriefInformationSheet() {
   <Button
     variant="outlined"
     color="secondary"
-    href=" /survey"
+    href="/survey" // replace with actual survey link
   >
     Survey Link
   </Button>

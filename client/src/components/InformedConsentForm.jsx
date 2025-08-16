@@ -222,7 +222,7 @@ export default function InformedConsentForm() {
              <Button
                   variant="outlined"
                   color="secondary"
-                  href="/survey" // replace with actual survey link
+                  href="/survey" 
                 >
                   Survey Link
                 </Button>
