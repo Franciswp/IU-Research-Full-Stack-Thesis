@@ -219,15 +219,19 @@ export default function InformedConsentForm() {
                 Submit Consent
               </Button>
 
-              <Button
-                variant="outlined"
-                color="secondary"
-                href="https://forms.office.com/Pages/ResponsePage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u"
-                target="_self"
-                rel="noopener"
-              >
-                Survey Link
-              </Button>
+             <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() =>
+                    window.open(
+                      "https://forms.office.com/Pages/ResponsePage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u",
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+                >
+                  Survey Link
+                </Button>
 
               <Button variant="outlined" color="primary" href="/">
                 Previous 

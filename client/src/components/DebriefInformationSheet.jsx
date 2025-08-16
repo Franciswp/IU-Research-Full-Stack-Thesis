@@ -30,16 +30,20 @@ export default function DebriefInformationSheet() {
           Thank you for your contribution!
         </Typography><br />
         <Box display="flex" gap={2}>
-            <Button
-               variant="outlined"
-               color="secondary"
-               href="https://forms.office.com/Pages/ResponsePage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u"
-               target="_self"
-               rel="noopener"
-               >
-                Survey Link
-            </Button>
-        </Box>                
+   <Button
+     variant="outlined"
+     color="secondary"
+     onClick={() =>
+       window.open(
+         "https://forms.office.com/Pages/ResponsePage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u",
+         "_blank",
+         "noopener,noreferrer"
+       )
+     }
+   >
+     Survey Link
+   </Button>
+</Box>                
       </Paper>
     </Container>
   );
