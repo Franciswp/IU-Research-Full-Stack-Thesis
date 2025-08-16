@@ -222,7 +222,7 @@ export default function InformedConsentForm() {
               <Button
                 variant="outlined"
                 color="secondary"
-                href="https://forms.office.com/e/qAHARw708y?origin=lprLink"
+                href="https://forms.office.com/e/W8HDZKcjYu"
                 target="_blank"
                 rel="noopener"
               >
