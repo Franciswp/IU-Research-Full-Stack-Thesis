@@ -225,7 +225,7 @@ export default function InformedConsentForm() {
                   onClick={() =>
                     setTimeout(() => {
                       window.open(
-                        "https://forms.office.com/e/qeJTgKiqrt",
+                        "https://forms.office.com/pages/responsepage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u&route=shorturl",
                         "_blank",
                         "noopener,noreferrer"
                       );

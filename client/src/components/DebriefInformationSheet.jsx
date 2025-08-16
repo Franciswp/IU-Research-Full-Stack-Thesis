@@ -29,28 +29,22 @@ export default function DebriefInformationSheet() {
         <Typography gutterBottom>
           Thank you for your contribution!
         </Typography><br />
-        <Box display="flex" gap={2}>
-   <Button
-          variant="outlined"
-          color="secondary"
-          onClick={() =>
-            setTimeout(() => {
-              window.open(
-                "https://forms.office.com/e/qeJTgKiqrt",
-                "_blank",
-                "noopener,noreferrer"
-              );
-            }, 1000)
-          }
-        >
-          Survey Link
-        </Button>
-                         );
-                       }, 1000)
-                     }
-                   >
-                     Survey Link
-                   </Button>
+<Box display="flex" gap={2}>
+  <Button
+    variant="outlined"
+    color="secondary"
+    onClick={() =>
+      setTimeout(() => {
+        window.open(
+          "https://forms.office.com/pages/responsepage.aspx?id=_skZ9LD3h02-6OjfshkMqwG3Zop2I0BCkGubfAyTu8lUMzBVR0kxRVhEODExTlRQQlZKUVhOVUE3Qy4u&route=shorturl",
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }, 1000)
+    }
+  >
+    Survey Link
+  </Button>
 </Box>                
       </Paper>
     </Container>
