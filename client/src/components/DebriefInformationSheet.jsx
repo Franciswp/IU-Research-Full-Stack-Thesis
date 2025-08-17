@@ -29,7 +29,7 @@ export default function DebriefInformationSheet() {
         <Typography gutterBottom>
           Thank you for your contribution!
         </Typography><br />
-<Box display="flex" gap={2}>
+{/* <Box display="flex" gap={2}>
   <Button
     variant="outlined"
     color="secondary"
@@ -37,7 +37,7 @@ export default function DebriefInformationSheet() {
   >
     Survey Link
   </Button>
-</Box>                
+</Box>           */}      
       </Paper>
     </Container>
   );

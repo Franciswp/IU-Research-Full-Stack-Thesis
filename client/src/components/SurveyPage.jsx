@@ -20,6 +20,7 @@ import {
 } from "@mui/material";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
+import { useNavigate } from "react-router-dom";
 
 /**
  * SurveyPage.jsx
@@ -141,6 +142,7 @@ const defaultSections = [
 ];
 
 export default function SurveyPage({ requireAll = true, onSuccess }) {
+  const navigate = useNavigate();
   const sections = defaultSections;
   const [activeIndex, setActiveIndex] = useState(0);
   const [answers, setAnswers] = useState({}); // { questionId: number }
@@ -240,8 +242,13 @@ export default function SurveyPage({ requireAll = true, onSuccess }) {
       setAnswers({});
       setComments({});
       setActiveIndex(0);
-
+      
       if (typeof onSuccess === "function") onSuccess(data);
+      // Delay slightly so the user sees the success message
+      setTimeout(() => {
+        navigate("/debrief", { replace: true });
+      }, 1500);
+
     } catch (err) {
       console.error("Submit error", err);
       setSnackbar({ open: true, severity: "error", message: `Submission failed: ${err.message}` });
