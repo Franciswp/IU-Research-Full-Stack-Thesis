@@ -33,7 +33,7 @@ export default function ParticipantInfoSheet() {
           <strong>Voluntary Participation:</strong> Participation in this study is entirely voluntary. You may withdraw at any time without providing a reason, and without any negative consequences.
         </Typography>
         <Typography gutterBottom>
-          <strong>What Participation Involves:</strong> The proposed platform innovates by integrating Infrastructure as Code (IaC) with AI for real-time, geography-agnostic coordination in humanitarian aid. Building on urban-focused systems (Kangana, 2024) and proactive DevOps approaches (Latvakoski, 2022), it extends existing tools to provide cost-effective, scalable solutions amid rising global disasters (UNDRR, 2023). Participation will take approximately 20-30 minutes.
+          <strong>What Participation Involves:</strong> The proposed platform innovates by integrating Infrastructure as Code (IaC) with AI for real-time, geography-agnostic coordination in humanitarian aid. Building on urban-focused systems (Kangana, 2024) and proactive DevOps approaches (Latvakoski, 2022), it extends existing tools to provide cost-effective, scalable solutions amid rising global disasters (UNDRR, 2023). Participation will take approximately 5-10 minutes.
         </Typography>
         <Typography gutterBottom>
           <strong>Data Protection and Confidentiality:</strong> All information collected will be treated confidentially in accordance with the European General Data Protection Regulation (GDPR). Your data will be anonymized and securely stored on IU's official OneDrive system and will be deleted after 8 weeks, max 6 months.
